@@ -1,6 +1,6 @@
 ---
 name: tgstation-client
-description: Play on tgstation, or any Space Station 13 server built on the tgstation codebase, as an ordinary player (not an admin) through the seeker MCP tools (connect, look, walk_to, click, say, tgui_act...). Covers joining a round, moving, using items and machines, talking and the radio, fighting and fleeing, asking admins for help, and what to do when you are dead. Use it whenever the seeker tools are connected to a tgstation-like server and you are not an admin, or the user asks you to play, join, or do something in such a game.
+description: Play on tgstation, or any Space Station 13 server built on the tgstation codebase, as an ordinary player (not an admin) through the seeker MCP tools (connect, look, walk_to, click, say, tgui_act...), including writing reusable Python scripts through run_script for multi-step tasks. Covers joining a round, moving, using items and machines, talking and the radio, fighting and fleeing, asking admins for help, what to do when you are dead, and breaking tasks into reusable script components. Use it whenever the seeker tools are connected to a tgstation-like server and you are not an admin, or the user asks you to play, join, or do something in such a game.
 ---
 
 # tgstation client (player)
@@ -13,6 +13,7 @@ people.
 
 Further reading in this skill, open when you need it:
 
+- [references/scripting.md](references/scripting.md): writing `run_script` Python — reusable components, guards, the envelope, gotchas.
 - [references/playing.md](references/playing.md): the round, your body, the station, talking, danger, and being a ghost.
 - [references/reading-the-code.md](references/reading-the-code.md): finding answers in the DM source, when a checkout is available.
 
@@ -69,6 +70,19 @@ The tools see what a player sees and act as a player does. Each answer already c
   game is still waiting for you to answer.
 - Things you see have ids (`mob 2957`, `obj 12`). The game reuses ids of deleted things, so
   re-look before acting on an old one.
+
+## Scripts: break tasks into reusable parts
+
+For anything multi-step or looping, `run_script` a Python script instead of a
+chain of single tool calls: it runs against this same session and answers once
+with `{ok, result, logs, error}`. The habit that pays off: **write reusable
+scripts, not one-offs**. Decompose tasks into small single-purpose parts (walk
+somewhere, unbuckle, work a machine, watch chat), give each a docstring with
+its `args`, guard on state before acting (don't click a seat you're not
+buckled into — you'd sit back down), and return a structured verdict. Check
+`scripts/examples/` in the seeker-mcp repo before writing anything new;
+compose, don't rewrite. Details, conventions and gotchas:
+[references/scripting.md](references/scripting.md).
 
 ## What you can do about a problem
 

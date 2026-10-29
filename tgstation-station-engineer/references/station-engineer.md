@@ -114,6 +114,22 @@ Engineering is on the starboard (east) side. Use `walk_to {area: "Engineering"}`
   - It causes **hallucinations** for anyone who can see it within about 6–7 tiles. **Mesons do not prevent this in this version**; only breaking line of sight does. Hallucinations can show you fake people, fake attacks and fake messages. Trust NT CIMS readings and the radio, and step out of view.
 - **Bullets damage the crystal; lasers don't.** Never fire a gun at it. A random "space dust" event can hit the crystal and switch it on early, so set up the cooling first.
 
+### 4.1b Guide additions (from the wiki Supermatter guide, `supermatter_setup_guide.txt`)
+
+- **Plasma + oxygen combust at 373.15 K** — below the 626 K damage threshold. The combustion is exothermic and pushes the chamber past 626 K, so the number you actually keep down is **373 K, not 626 K**. Keep waste O2/plasma out of the chamber.
+- **Four delamination types at 0% integrity** (later takes priority):
+  1. **Explosive** (default) — blast sized by gas heat power; irradiation + hallucinations + anomalies.
+  2. **Tesla** — internal energy > **5000 MeV** at delam → energy ball.
+  3. **Singularity** — absorbed > **1800 moles** at delam → singulo.
+  4. **Resonance cascade** — **40% hyper-nob + 40% anti-nob, ≥270 moles** (or a traitor destabilizing crystal) → station-wide crystal mass, shuttle disabled, CentCom rift. Engine crystal only, never shards.
+- The wiki says **30 s** from 0% integrity (healing is possible during that window); the common-channel broadcast says **15 seconds** — treat 15 s as the realistic window and RUN.
+- Below **40% integrity** (or above 5000 MeV) the crystal rapidly spawns **flux and gravity anomalies** — a grav anomaly drags you and throws toolboxes. At low integrity wear an engineering MODsuit if one exists, else radsuit + insuls + magboots.
+- **Heat resistance you can add** (raises the 313 K base): N2O +500%, proto-nitrate +400%, H2 +100%, low moles up to +100%, and a **psy coefficient** (psychologist or HYPERG1G4 skillchip nearby, up to +45 K). N2O decays into O2+N2 when hot — during a heat delam that O2 feeds the fire, so it's an early-add gas, not a rescue gas.
+- **Gas cheat-sheet** (waste multiplier / heat power gain at 100%): N2 −250%/−100% (the standard); hyper-nob −1400%/−100% and stops all reactions ≥5 mol (cascade ingredient); CO2 +100%/+100% with **power-decay negation +100%** (great power, charge-delam risk); plasma +1400% (never in a roundstart setup); tritium +900%/+300% transmission; freon stops power emission above 30% (emergency stop, makes hot ice); halon makes CO2 — never. Full table: scriptz `engineering/index.md`.
+- **Diode disks** (printable after R&D research, loaded into emitters — screwdriver the maint panel open; swap with a crowbar): **Psychosyphoning** (psy coeff +25%, −25 MeV — keep this in for efficient setups), **Electrodisruptive** (+0.25% integrity, −60 MeV — the safety disk), **Conflagratory** (+150 MeV, −0.15% integrity — power combo), **Magnetogenerative** (+5% molar absorption, stacks — cascade enabler). Hyperconcussive is the traitor disk.
+- **Emitters won't fire?** Check the cable and SMES connection → maximize SMES → run a **P.A.C.M.A.N.** for kickstart power (shut it down once the engine feeds) → or toss a **1-credit holochip** (alt-click your ID) / `*kiss` the crystal **through the glass** — anything hitting the crystal adds trickle energy.
+- **Delam mitigation, guide's common causes in fix order:** emitters OFF first (waste scales with energy); pumps offline/at 101 kPa default; filters offline or no N2 filter returning coolant; vents' external limit back on; scrubbers not siphoning; broken heat exchangers; **too much gas** (pumps can't push into high pressure — exactly the flood that killed us); **too little N2** (waste O2/plasma dominates composition). A psy-coefficient source gives heat resistance + decay negation for free.
+
 ### 4.2 The gas loop on this map
 
 The coolant is **nitrogen**. Gas circulates like this:
