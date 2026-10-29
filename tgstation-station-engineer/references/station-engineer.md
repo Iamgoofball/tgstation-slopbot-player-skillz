@@ -505,6 +505,29 @@ You're expected to stand your ground for the engine only by calling for help, lo
 15. Lock the emitters (ID) and reflectors (screwdriver).
 16. Watch 5 min → report on `:e` and `;`.
 
+### The scriptz library (use these instead of hand-written one-offs)
+
+Everything lives in `E:\byond_agent_test\tgstation-slopbot-player-scriptz`
+(`run_script {script: "<abs path>", args: {...}}`). For engine work:
+
+| Script | Use |
+| --- | --- |
+| `common/check.py` | between EVERY actions: chat + status + surroundings + danger_words |
+| `engineering/cims_read.py` | crystal read with guide-threshold flags (charge/singularity/combustion/anomaly/countdown) |
+| `engineering/pump_set.py` | ctrl-click on/off + alt-click 4500 kPa one pump/filter by name |
+| `engineering/freezer_set.py` | freezer → ON @ 73.15 K (never alt-click a freezer) |
+| `engineering/air_alarm_setup.py` | vents (external limit OFF) / scrubbers (siphon + widenet, only when CIMS gates pass) |
+| `engineering/smes_set.py` | SMES 200 kW in / 190 kW out |
+| `engineering/emitters_on.py` | emitters ON from behind (or `off: true` to kill beams) with watchdog |
+| `engineering/ui_batch.py` | many machines in one envelope with per-id tgui actions |
+| `engineering/machine_ui.py` | one machine: walk, open, parse, act |
+| `engineering/survey_machines.py` | walk spots, list machinery |
+| `engineering/pull.py` / `wrench.py` | seat canisters on ports (pull → trail → wrench) |
+| `engineering/delam_response.py` | EMERGENCY: emitters off → panic siphon → N2 valves → trend; "RUN NOW" on countdown |
+
+Read `engineering/index.md` in the repo before using them — it holds this
+fork's machine names, port layout, setup order and killer gotchas.
+
 **Engineer B, shift start:**
 1. Gloves on, T-ray scanner in pocket, inducer from the electrical supplies locker, optionally a flash from Technical Storage.
 2. Set the three SMES (200/190) and check AmpCheck.

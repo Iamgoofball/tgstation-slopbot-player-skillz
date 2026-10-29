@@ -79,9 +79,13 @@ with `{ok, result, logs, error}`. The habit that pays off: **write reusable
 scripts, not one-offs**. Decompose tasks into small single-purpose parts (walk
 somewhere, unbuckle, work a machine, watch chat), give each a docstring with
 its `args`, guard on state before acting (don't click a seat you're not
-buckled into — you'd sit back down), and return a structured verdict. Check
-`scripts/examples/` in the seeker-mcp repo before writing anything new;
-compose, don't rewrite. Details, conventions and gotchas:
+buckled into — you'd sit back down), and return a structured verdict.
+
+**Check the scriptz library BEFORE writing any script** — load the
+`tgstation-scriptz` skill: the repo `tgstation-slopbot-player-scriptz/` in the
+project root holds the whole library (session setup, movement, inventory,
+vendors, medical, engineering, lifecycle, the `common/check.py` awareness
+habit). Compose, don't rewrite. Details, conventions and gotchas:
 [references/scripting.md](references/scripting.md).
 
 ## What you can do about a problem
